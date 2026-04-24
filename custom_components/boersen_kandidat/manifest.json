@@ -1,0 +1,15 @@
+{
+  "domain": "boersen_kandidat",
+  "name": "Börsenkandidaten",
+  "version": "1.0.0",
+  "documentation": "",
+  "issue_tracker": "",
+  "codeowners": [],
+  "requirements": [
+    "aiohttp>=3.13.3"
+  ],
+  "dependencies": [],
+  "after_dependencies": [],
+  "iot_class": "cloud_polling",
+  "config_flow": true
+}

@@ -1,0 +1,87 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Kandidatenliste erstellen",
+        "description": "Gib deiner Kaufkandidatenliste einen Namen und wähle die Standard-Kursquelle.",
+        "data": {
+          "liste_name": "Listen-Name",
+          "data_source": "Standard-Kursquelle",
+          "scan_interval": "Aktualisierungsintervall"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Eine Liste mit diesem Namen existiert bereits."
+    },
+    "error": {
+      "invalid_name": "Bitte gib einen gültigen Listen-Namen ein."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kaufkandidaten verwalten",
+        "description": "Aktuelle Kandidaten:\n{overview}",
+        "data": {
+          "action": "Aktion wählen"
+        }
+      },
+      "add_kandidat": {
+        "title": "Neuen Kaufkandidaten hinzufügen",
+        "data": {
+          "bezeichnung": "Bezeichnung (z.B. BASF SE, Apple Inc.)",
+          "kuerzel": "Börsenkürzel Yahoo (z.B. AAPL, BAS.DE)",
+          "datenquelle": "Kursquelle",
+          "wkn": "WKN (optional)",
+          "isin": "ISIN (Pflicht für ING)",
+          "zielkurs": "Zielkurs (Alarm bei Unterschreitung)"
+        },
+        "errors": {
+          "isin_required": "ISIN ist Pflicht wenn ING als Kursquelle gewählt ist",
+          "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein."
+        }
+      },
+      "select_kandidat": {
+        "title": "Kandidat wählen",
+        "description": "Wähle den Kandidaten den du bearbeiten oder löschen möchtest.",
+        "data": {
+          "kid_id": "Kandidat",
+          "action": "Aktion"
+        }
+      },
+      "edit_kandidat": {
+        "title": "Kandidat bearbeiten: {kuerzel}",
+        "data": {
+          "bezeichnung": "Bezeichnung",
+          "kuerzel": "Börsenkürzel Yahoo",
+          "datenquelle": "Kursquelle",
+          "wkn": "WKN",
+          "isin": "ISIN (Pflicht für ING)",
+          "zielkurs": "Zielkurs"
+        },
+        "errors": {
+          "isin_required": "ISIN ist Pflicht wenn ING als Kursquelle gewählt ist",
+          "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein."
+        }
+      },
+      "confirm_delete": {
+        "title": "Kandidat löschen",
+        "description": "Möchtest du den Kandidaten \"{kuerzel}\" wirklich aus der Liste entfernen?",
+        "data": {
+          "confirm": "Ja, Kandidat löschen"
+        }
+      },
+      "settings": {
+        "title": "Einstellungen",
+        "data": {
+          "data_source": "Standard-Kursquelle",
+          "scan_interval": "Aktualisierungsintervall (Minuten)"
+        }
+      }
+    },
+    "error": {
+      "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein."
+    }
+  }
+}
