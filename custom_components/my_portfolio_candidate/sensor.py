@@ -113,6 +113,7 @@ class KandidatKursSensor(CoordinatorEntity[MyPortfolioCandidateCoordinator], Sen
     def extra_state_attributes(self) -> dict[str, Any]:
         base, data = self._base, self._data
         return {
+            "integration":        "my_portfolio_candidate",
             "liste":              self.coordinator.liste_name,
             ATTR_DATENQUELLE:     base.get(ATTR_DATENQUELLE, ""),
             ATTR_BEZEICHNUNG:     base.get(ATTR_BEZEICHNUNG, ""),

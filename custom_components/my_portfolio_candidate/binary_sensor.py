@@ -113,6 +113,7 @@ class KursUnterschrittenSensor(
     def extra_state_attributes(self) -> dict[str, Any]:
         base, data = self._base, self._data
         return {
+            "integration":       "my_portfolio_candidate",
             "liste":             self.coordinator.liste_name,
             ATTR_BEZEICHNUNG:    base.get(ATTR_BEZEICHNUNG, ""),
             ATTR_KUERZEL:        base.get(ATTR_KUERZEL, ""),
