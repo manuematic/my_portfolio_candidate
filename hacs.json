@@ -1,0 +1,10 @@
+{
+  "name": "My Portfolio Candidate",
+  "domain": "my_portfolio_candidate",
+  "documentation": "https://github.com/manuematic/my_portfolio_candidate",
+  "issue_tracker": "https://github.com/manuematic/my_portfolio_candidate/issues",
+  "codeowners": ["@manuematic"],
+  "requirements": [],
+  "iot_class": "cloud_polling",
+  "homeassistant": "2023.6.0"
+}
