@@ -119,7 +119,7 @@ class KursUnterschrittenSensor(
             ATTR_KUERZEL:        base.get(ATTR_KUERZEL, ""),
             ATTR_ISIN:           base.get(ATTR_ISIN, ""),
             ATTR_ZIELKURS:       base.get(ATTR_ZIELKURS),
-            ATTR_AKTUELLER_KURS: data.get(ATTR_AKTUELLER_KURS),
+            ATTR_AKTUELLER_KURS: data.get(ATTR_AKTUELLER_KURS) or 0.0,
             ATTR_DIFFERENZ_ABS:  data.get(ATTR_DIFFERENZ_ABS),
             ATTR_DIFFERENZ_PCT:  data.get(ATTR_DIFFERENZ_PCT),
         }
