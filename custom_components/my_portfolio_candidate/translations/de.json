@@ -35,11 +35,15 @@
           "datenquelle": "Kursquelle",
           "wkn": "WKN (optional)",
           "isin": "ISIN (Pflicht für ING)",
-          "zielkurs": "Zielkurs (Alarm bei Unterschreitung)"
+          "zielkurs": "Zielkurs (Alarm bei Unterschreitung)",
+          "memo_zielkurs": "Memo-Zielkurs (nur Notiz, keine Funktion)",
+          "memo_stoppkurs": "Memo-Stoppkurs (nur Notiz, keine Funktion)",
+          "notiz": "Notiz (max. 50 Zeichen)"
         },
         "errors": {
           "isin_required": "ISIN ist Pflicht wenn ING als Kursquelle gewählt ist",
-          "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein."
+          "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein.",
+          "notiz_too_long": "Die Notiz darf maximal 50 Zeichen lang sein."
         }
       },
       "select_kandidat": {
@@ -58,11 +62,15 @@
           "datenquelle": "Kursquelle",
           "wkn": "WKN",
           "isin": "ISIN (Pflicht für ING)",
-          "zielkurs": "Zielkurs"
+          "zielkurs": "Zielkurs",
+          "memo_zielkurs": "Memo-Zielkurs (nur Notiz, keine Funktion)",
+          "memo_stoppkurs": "Memo-Stoppkurs (nur Notiz, keine Funktion)",
+          "notiz": "Notiz (max. 50 Zeichen)"
         },
         "errors": {
           "isin_required": "ISIN ist Pflicht wenn ING als Kursquelle gewählt ist",
-          "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein."
+          "invalid_kuerzel": "Bitte gib ein gültiges Börsenkürzel ein.",
+          "notiz_too_long": "Die Notiz darf maximal 50 Zeichen lang sein."
         }
       },
       "confirm_delete": {

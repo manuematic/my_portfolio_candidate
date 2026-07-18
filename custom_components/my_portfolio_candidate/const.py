@@ -12,6 +12,7 @@ CONF_LISTE_NAME = "liste_name"
 CONF_SCAN_INTERVAL = "scan_interval"
 CONF_DATA_SOURCE = "data_source"
 DEFAULT_SCAN_INTERVAL = 15  # minutes
+NOTIZ_MAX_LEN = 50
 
 # Data sources
 SOURCE_ING   = "ing"
@@ -28,6 +29,9 @@ ATTR_KUERZEL         = "kuerzel"
 ATTR_WKN             = "wkn"
 ATTR_ISIN            = "isin"
 ATTR_ZIELKURS        = "zielkurs"          # Kauf-Zielkurs (Alarm bei Unterschreitung)
+ATTR_NOTIZ           = "notiz"             # Freitext-Notiz, max. 50 Zeichen, ohne Funktion
+ATTR_MEMO_ZIELKURS   = "memo_zielkurs"     # Merkfeld z.B. Börse-Online-Zielkurs, ohne Funktion
+ATTR_MEMO_STOPPKURS  = "memo_stoppkurs"    # Merkfeld z.B. Börse-Online-Stoppkurs, ohne Funktion
 ATTR_DATENQUELLE     = "datenquelle"
 ATTR_AKTUELLER_KURS  = "aktueller_kurs"
 ATTR_DIFFERENZ_ABS   = "differenz_abs"     # aktueller_kurs - zielkurs

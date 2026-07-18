@@ -97,6 +97,9 @@ Alle Kandidaten werden direkt über die HA-Benutzeroberfläche verwaltet:
 | ISIN | ✅ bei ING | z.B. `DE0007164600` für SAP |
 | WKN | ☐ | z.B. `716460` (optional, nur zur Info) |
 | Zielkurs | ✅ | Kaufkurs-Ziel in € – Alarm wird ausgelöst wenn Kurs ≤ Zielkurs |
+| Memo-Zielkurs | ☐ | Reines Merkfeld (z.B. Zielkurs-Vorgabe von Börse Online), keine Alarm-Funktion |
+| Memo-Stoppkurs | ☐ | Reines Merkfeld (z.B. Stoppkurs-Vorgabe von Börse Online), keine Alarm-Funktion |
+| Notiz | ☐ | Freitext, max. 50 Zeichen, reine Merkfunktion ohne Alarm-Logik |
 
 ### Kürzel- und ISIN-Beispiele
 
@@ -192,6 +195,9 @@ Entitäts-ID: `sensor.<bezeichnung>`
 | `wkn` | WKN |
 | `datenquelle` | `ing` oder `yahoo_finance` |
 | `zielkurs` | Konfigurierter Zielkurs in € |
+| `notiz` | Freitext-Notiz (max. 50 Zeichen), reine Merkfunktion ohne Alarm-Logik |
+| `memo_zielkurs` | Merkfeld für einen Zielkurs (z.B. Börse Online), ohne Alarm-Logik |
+| `memo_stoppkurs` | Merkfeld für einen Stoppkurs (z.B. Börse Online), ohne Alarm-Logik |
 | `aktueller_kurs` | Aktueller Kurs in € |
 | `differenz_abs` | Differenz: aktueller Kurs − Zielkurs in € |
 | `differenz_pct` | Differenz in % |
@@ -204,12 +210,18 @@ Entitäts-ID: `sensor.<bezeichnung>`
 ### Binary Sensor: Kurs unterschritten
 Entitäts-ID: `binary_sensor.<bezeichnung>_kurs_unterschritten`
 
+> Als Diagnose-Entität eingestuft – erscheint in der Geräteansicht unter „Diagnose" statt
+> zusammen mit dem Kurs-Sensor, damit jede Aktie dort nur einmal auftaucht.
+
 | Attribut | Beschreibung |
 |---|---|
 | `bezeichnung` | Name des Kandidaten |
 | `kuerzel` | Börsenkürzel |
 | `isin` | ISIN |
 | `zielkurs` | Zielkurs in € |
+| `notiz` | Freitext-Notiz (max. 50 Zeichen), reine Merkfunktion ohne Alarm-Logik |
+| `memo_zielkurs` | Merkfeld für einen Zielkurs (z.B. Börse Online), ohne Alarm-Logik |
+| `memo_stoppkurs` | Merkfeld für einen Stoppkurs (z.B. Börse Online), ohne Alarm-Logik |
 | `aktueller_kurs` | Aktueller Kurs in € |
 | `differenz_abs` | Differenz in € |
 | `differenz_pct` | Differenz in % |

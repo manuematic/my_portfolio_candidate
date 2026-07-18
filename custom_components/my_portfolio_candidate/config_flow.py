@@ -23,6 +23,10 @@ from .const import (
     ATTR_ISIN,
     ATTR_KUERZEL,
     ATTR_ZIELKURS,
+    ATTR_NOTIZ,
+    ATTR_MEMO_ZIELKURS,
+    ATTR_MEMO_STOPPKURS,
+    NOTIZ_MAX_LEN,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -63,6 +67,15 @@ def _kandidat_schema(defaults: dict | None = None) -> vol.Schema:
         ),
         vol.Required(ATTR_ZIELKURS, default=d.get(ATTR_ZIELKURS, 0.0)): selector.selector(
             {"number": {"min": 0, "max": 999999, "step": 0.001, "mode": "box"}}
+        ),
+        vol.Optional(ATTR_MEMO_ZIELKURS, default=d.get(ATTR_MEMO_ZIELKURS, 0.0)): selector.selector(
+            {"number": {"min": 0, "max": 999999, "step": 0.001, "mode": "box"}}
+        ),
+        vol.Optional(ATTR_MEMO_STOPPKURS, default=d.get(ATTR_MEMO_STOPPKURS, 0.0)): selector.selector(
+            {"number": {"min": 0, "max": 999999, "step": 0.001, "mode": "box"}}
+        ),
+        vol.Optional(ATTR_NOTIZ, default=d.get(ATTR_NOTIZ, "")): selector.selector(
+            {"text": {"type": "text"}}
         ),
     })
 
@@ -191,11 +204,14 @@ class MyPortfolioCandidateOptionsFlow(config_entries.OptionsFlow):
             kuerzel = str(user_input.get(ATTR_KUERZEL, "")).strip().upper()
             isin    = str(user_input.get(ATTR_ISIN, "")).strip().upper()
             quelle  = user_input.get(ATTR_DATENQUELLE, SOURCE_ING)
+            notiz   = str(user_input.get(ATTR_NOTIZ, "")).strip()
 
             if not kuerzel:
                 errors[ATTR_KUERZEL] = "invalid_kuerzel"
             elif quelle == SOURCE_ING and not isin:
                 errors[ATTR_ISIN] = "isin_required"
+            elif len(notiz) > NOTIZ_MAX_LEN:
+                errors[ATTR_NOTIZ] = "notiz_too_long"
             else:
                 kid_data = self._build_kandidat_data(user_input, kuerzel, isin)
                 if coordinator:
@@ -266,11 +282,14 @@ class MyPortfolioCandidateOptionsFlow(config_entries.OptionsFlow):
             kuerzel = str(user_input.get(ATTR_KUERZEL, "")).strip().upper()
             isin    = str(user_input.get(ATTR_ISIN, "")).strip().upper()
             quelle  = user_input.get(ATTR_DATENQUELLE, SOURCE_ING)
+            notiz   = str(user_input.get(ATTR_NOTIZ, "")).strip()
 
             if not kuerzel:
                 errors[ATTR_KUERZEL] = "invalid_kuerzel"
             elif quelle == SOURCE_ING and not isin:
                 errors[ATTR_ISIN] = "isin_required"
+            elif len(notiz) > NOTIZ_MAX_LEN:
+                errors[ATTR_NOTIZ] = "notiz_too_long"
             else:
                 kid_data = self._build_kandidat_data(user_input, kuerzel, isin)
                 if coordinator and self._selected_kid_id:
@@ -351,6 +370,8 @@ class MyPortfolioCandidateOptionsFlow(config_entries.OptionsFlow):
     @staticmethod
     def _build_kandidat_data(user_input: dict, kuerzel: str, isin: str) -> dict:
         zielkurs = user_input.get(ATTR_ZIELKURS, 0.0)
+        memo_zielkurs = user_input.get(ATTR_MEMO_ZIELKURS, 0.0)
+        memo_stoppkurs = user_input.get(ATTR_MEMO_STOPPKURS, 0.0)
         return {
             ATTR_BEZEICHNUNG: str(user_input.get(ATTR_BEZEICHNUNG, "")).strip(),
             ATTR_DATENQUELLE: user_input.get(ATTR_DATENQUELLE, SOURCE_ING),
@@ -358,4 +379,7 @@ class MyPortfolioCandidateOptionsFlow(config_entries.OptionsFlow):
             ATTR_WKN:         str(user_input.get(ATTR_WKN, "")).strip().upper(),
             ATTR_ISIN:        isin,
             ATTR_ZIELKURS:    round(float(zielkurs), 3) if zielkurs else 0.0,
+            ATTR_NOTIZ:           str(user_input.get(ATTR_NOTIZ, "")).strip()[:NOTIZ_MAX_LEN],
+            ATTR_MEMO_ZIELKURS:   round(float(memo_zielkurs), 3) if memo_zielkurs else 0.0,
+            ATTR_MEMO_STOPPKURS:  round(float(memo_stoppkurs), 3) if memo_stoppkurs else 0.0,
         }

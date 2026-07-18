@@ -10,7 +10,7 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.entity import DeviceInfo, EntityCategory
 from homeassistant.helpers.device_registry import DeviceEntryType
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -22,6 +22,9 @@ from .const import (
     ATTR_KUERZEL,
     ATTR_ISIN,
     ATTR_ZIELKURS,
+    ATTR_NOTIZ,
+    ATTR_MEMO_ZIELKURS,
+    ATTR_MEMO_STOPPKURS,
     ATTR_AKTUELLER_KURS,
     ATTR_DIFFERENZ_ABS,
     ATTR_DIFFERENZ_PCT,
@@ -69,6 +72,7 @@ class KursUnterschrittenSensor(
 
     _attr_has_entity_name = True
     _attr_device_class = BinarySensorDeviceClass.PROBLEM
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
 
     def __init__(
         self,
@@ -119,6 +123,9 @@ class KursUnterschrittenSensor(
             ATTR_KUERZEL:        base.get(ATTR_KUERZEL, ""),
             ATTR_ISIN:           base.get(ATTR_ISIN, ""),
             ATTR_ZIELKURS:       base.get(ATTR_ZIELKURS),
+            ATTR_NOTIZ:          base.get(ATTR_NOTIZ, ""),
+            ATTR_MEMO_ZIELKURS:  base.get(ATTR_MEMO_ZIELKURS),
+            ATTR_MEMO_STOPPKURS: base.get(ATTR_MEMO_STOPPKURS),
             ATTR_AKTUELLER_KURS: data.get(ATTR_AKTUELLER_KURS) or 0.0,
             ATTR_DIFFERENZ_ABS:  data.get(ATTR_DIFFERENZ_ABS),
             ATTR_DIFFERENZ_PCT:  data.get(ATTR_DIFFERENZ_PCT),
